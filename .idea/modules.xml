@@ -9,9 +9,9 @@
       <module fileurl="file://$PROJECT_DIR$/Sprint2.iml" filepath="$PROJECT_DIR$/Sprint2.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Sprint2.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Sprint2.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Sprint2.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Sprint2.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Sprint4.iml" filepath="$PROJECT_DIR$/Sprint4.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Sprint4.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Sprint4.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Sprint4.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Sprint4.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/discodeit.iml" filepath="$PROJECT_DIR$/.idea/modules/discodeit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/discodeit.main.iml" filepath="$PROJECT_DIR$/.idea/modules/discodeit.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/discodeit.test.iml" filepath="$PROJECT_DIR$/.idea/modules/discodeit.test.iml" />
     </modules>
   </component>
 </project>
