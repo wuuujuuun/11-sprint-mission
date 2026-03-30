@@ -5,6 +5,8 @@
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-to-slf4j/2.24.1/fc8228007ccbf3bcdd9c6045de2c20bd03dbcf6e/log4j-to-slf4j-2.24.1.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-to-slf4j/2.24.1/613adc923cc117956016353fd9eaf5ca293aa2ac/log4j-to-slf4j-2.24.1-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

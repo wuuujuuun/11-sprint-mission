@@ -5,6 +5,8 @@
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/2.18.1/944810b96bfe1d149ecdafb1228537610e14367a/jackson-datatype-jdk8-2.18.1.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/2.18.1/173acaf60c1dad3f01b4dc1f6d3a103c23737fd3/jackson-datatype-jdk8-2.18.1-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>
