@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Tag(name = "인증 (Auth)", description = "로그인 및 사용자 인증 관련 API")
+@Tag(name = "Auth")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/auth")
@@ -21,7 +21,7 @@ public class AuthController {
 
   private final AuthService authService;
 
-  @Operation(summary = "로그인", description = "ID와 비밀번호를 입력받아 로그인을 진행합니다.")
+  @Operation(summary = "Login")
   @PostMapping("/login")
   public ResponseEntity<User> login(@RequestBody LoginRequest loginRequest) {
     User user = authService.login(loginRequest);

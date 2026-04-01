@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Tag(name = "사용자 (User)", description = "사용자 관리 API")
+@Tag(name = "User API")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/users")
@@ -33,7 +33,7 @@ public class UserController {
   private final UserService userService;
   private final UserStatusService userStatusService;
 
-  @Operation(summary = "유저 생성")
+  @Operation(summary = "Create User")
   @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
   public ResponseEntity<User> create(
       @RequestPart("userCreateRequest") UserCreateRequest userCreateRequest,
@@ -45,10 +45,10 @@ public class UserController {
     return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
   }
 
-  @Operation(summary = "유저 정보 수정")
+  @Operation(summary = "Update User")
   @PatchMapping(path = "/{userId}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
   public ResponseEntity<User> update(
-      @Parameter(description = "수정할 유저 ID") @PathVariable("userId") UUID userId,
+      @Parameter(description = "User UUID") @PathVariable("userId") UUID userId,
       @RequestPart("userUpdateRequest") UserUpdateRequest userUpdateRequest,
       @RequestPart(value = "profile", required = false) MultipartFile profile
   ) {
@@ -58,25 +58,25 @@ public class UserController {
     return ResponseEntity.status(HttpStatus.OK).body(updatedUser);
   }
 
-  @Operation(summary = "유저 삭제")
+  @Operation(summary = "Delete User")
   @DeleteMapping("/{userId}")
   public ResponseEntity<Void> delete(
-      @Parameter(description = "삭제할 유저 ID") @PathVariable("userId") UUID userId) {
+      @Parameter(description = "User UUID") @PathVariable("userId") UUID userId) {
     userService.delete(userId);
     return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
   }
 
-  @Operation(summary = "전체 유저 조회")
+  @Operation(summary = "Find All Users")
   @GetMapping
   public ResponseEntity<List<UserDto>> findAll() {
-    List<List<UserDto>> users = (List) userService.findAll();
-    return ResponseEntity.status(HttpStatus.OK).body((List) users);
+    List<UserDto> users = userService.findAll();
+    return ResponseEntity.status(HttpStatus.OK).body(users);
   }
 
-  @Operation(summary = "유저 상태 수정")
+  @Operation(summary = "Update User Status")
   @PatchMapping("/{userId}/status")
   public ResponseEntity<UserStatus> updateUserStatusByUserId(
-      @Parameter(description = "상태를 변경할 유저 ID") @PathVariable("userId") UUID userId,
+      @Parameter(description = "User UUID") @PathVariable("userId") UUID userId,
       @RequestBody UserStatusUpdateRequest request) {
     UserStatus updatedUserStatus = userStatusService.updateByUserId(userId, request);
     return ResponseEntity.status(HttpStatus.OK).body(updatedUserStatus);

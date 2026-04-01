@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Tag(name = "메시지 (Message)", description = "메시지 관리 API")
+@Tag(name = "Message")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/messages")
@@ -29,7 +29,7 @@ public class MessageController {
 
   private final MessageService messageService;
 
-  @Operation(summary = "메시지 생성")
+  @Operation(summary = "Create Message")
   @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public ResponseEntity<Message> create(
       @RequestPart("messageCreateRequest") MessageCreateRequest messageCreateRequest,
@@ -53,27 +53,27 @@ public class MessageController {
     return ResponseEntity.status(HttpStatus.CREATED).body(createdMessage);
   }
 
-  @Operation(summary = "메시지 수정")
+  @Operation(summary = "Update Message")
   @PatchMapping("/{messageId}")
   public ResponseEntity<Message> update(
-      @Parameter(description = "메시지 ID") @PathVariable("messageId") UUID messageId,
+      @Parameter(description = "Message ID") @PathVariable("messageId") UUID messageId,
       @RequestBody MessageUpdateRequest request) {
     Message updatedMessage = messageService.update(messageId, request);
     return ResponseEntity.status(HttpStatus.OK).body(updatedMessage);
   }
 
-  @Operation(summary = "메시지 삭제")
+  @Operation(summary = "Delete Message")
   @DeleteMapping("/{messageId}")
   public ResponseEntity<Void> delete(
-      @Parameter(description = "삭제할 메시지 ID") @PathVariable("messageId") UUID messageId) {
+      @Parameter(description = "Message ID") @PathVariable("messageId") UUID messageId) {
     messageService.delete(messageId);
     return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
   }
 
-  @Operation(summary = "채널별 메시지 조회")
+  @Operation(summary = "Find Messages by Channel")
   @GetMapping("/channel/{channelId}")
   public ResponseEntity<List<Message>> findAllByChannelId(
-      @Parameter(description = "조회할 채널 ID") @PathVariable("channelId") UUID channelId) { // 수정됨
+      @Parameter(description = "Channel ID") @PathVariable("channelId") UUID channelId) {
     List<Message> messages = messageService.findAllByChannelId(channelId);
     return ResponseEntity.status(HttpStatus.OK).body(messages);
   }

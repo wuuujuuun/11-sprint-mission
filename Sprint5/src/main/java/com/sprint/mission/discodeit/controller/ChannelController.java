@@ -6,6 +6,9 @@ import com.sprint.mission.discodeit.dto.request.PublicChannelCreateRequest;
 import com.sprint.mission.discodeit.dto.request.PublicChannelUpdateRequest;
 import com.sprint.mission.discodeit.entity.Channel;
 import com.sprint.mission.discodeit.service.ChannelService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,46 +17,46 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+@Tag(name = "Channel API")
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/channels") // 1. 복수형 'channels'로 변경하여 자원 명시
+@RequestMapping("/api/channels")
 public class ChannelController {
 
   private final ChannelService channelService;
 
-  // [공개 채널 생성] POST /api/channels/public
+  @Operation(summary = "Create Public Channel")
   @PostMapping("/public")
   public ResponseEntity<Channel> createPublic(@RequestBody PublicChannelCreateRequest request) {
     Channel createdChannel = channelService.create(request);
     return ResponseEntity.status(HttpStatus.CREATED).body(createdChannel);
   }
 
-  // [비공개 채널 생성] POST /api/channels/private
+  @Operation(summary = "Create Private Channel")
   @PostMapping("/private")
   public ResponseEntity<Channel> createPrivate(@RequestBody PrivateChannelCreateRequest request) {
     Channel createdChannel = channelService.create(request);
     return ResponseEntity.status(HttpStatus.CREATED).body(createdChannel);
   }
 
-  // [채널 수정] PATCH /api/channels/{channelId}
-  // 주소의 {channelId}와 @PathVariable 이름이 일치해야 합니다.
+  @Operation(summary = "Update Channel")
   @PatchMapping("/{channelId}")
   public ResponseEntity<Channel> update(
-      @PathVariable("channelId") UUID channelId,
+      @Parameter(description = "Channel ID") @PathVariable("channelId") UUID channelId,
       @RequestBody PublicChannelUpdateRequest request) {
     Channel updatedChannel = channelService.update(channelId, request);
     return ResponseEntity.status(HttpStatus.OK).body(updatedChannel);
   }
 
-  // [채널 삭제] DELETE /api/channels/{channelId}
+  @Operation(summary = "Delete Channel")
   @DeleteMapping("/{channelId}")
-  public ResponseEntity<Void> delete(@PathVariable("channelId") UUID channelId) {
+  public ResponseEntity<Void> delete(
+      @Parameter(description = "Channel ID") @PathVariable("channelId") UUID channelId) {
     channelService.delete(channelId);
     return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
   }
 
-  // [유저별 채널 목록 조회] GET /api/channels?userId={userId}
-  // 필터링 조건은 @RequestParam을 사용합니다.
+  @Operation(summary = "Find Channels by User")
   @GetMapping
   public ResponseEntity<List<ChannelDto>> findAll(@RequestParam("userId") UUID userId) {
     List<ChannelDto> channels = channelService.findAllByUserId(userId);
