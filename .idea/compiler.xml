@@ -33,9 +33,9 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="com.sprint.mission.discodeit" options="-parameters" />
-      <module name="com.sprint.mission.discodeit.main" options="-parameters" />
-      <module name="com.sprint.mission.discodeit.test" options="-parameters" />
+      <module name="com.sprint.mission.discodeit" options="-parameters -parameters" />
+      <module name="com.sprint.mission.discodeit.main" options="-parameters -parameters" />
+      <module name="com.sprint.mission.discodeit.test" options="-parameters -parameters" />
       <module name="discodeit" options="-parameters" />
       <module name="discodeit.main" options="-parameters" />
       <module name="discodeit.test" options="-parameters" />
