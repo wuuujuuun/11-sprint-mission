@@ -14,7 +14,7 @@ import java.util.UUID;
 @Table(name = "users") // DB의 users 테이블과 매핑
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED) // JPA를 위한 기본 생성자
-public class User extends BaseEntity { // BaseEntity 상속!
+public class User extends BaseUpdatableEntity { // BaseEntity 상속!
 
   @Column(nullable = false, unique = true)
   private String username;

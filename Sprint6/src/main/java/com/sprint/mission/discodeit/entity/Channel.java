@@ -5,17 +5,19 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "channel")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 
-public class Channel extends BaseEntity {
+public class Channel extends BaseUpdatableEntity {
 
   @OneToMany(mappedBy = "channel", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Message> messages = new ArrayList<>();
-  
+
   @Column(nullable = false)
   private String name;
 
